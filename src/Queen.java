@@ -1,4 +1,4 @@
-public class Queen extends ChessPiece {
+public class Queen extends ChessPiece implements CheckFigure {
 
     public Queen(String color) {
         super(color);
@@ -16,6 +16,10 @@ public class Queen extends ChessPiece {
         }
 
         if (line == toLine && column == toColumn) {
+            return false;
+        }
+
+        if (obstacles(chessBoard, line, column, toLine, toColumn)) {
             return false;
         }
 

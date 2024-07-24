@@ -1,4 +1,4 @@
-public class Bishop extends ChessPiece {
+public class Bishop extends ChessPiece implements CheckFigure {
 
     public Bishop(String color) {
         super(color);
@@ -18,24 +18,28 @@ public class Bishop extends ChessPiece {
             return false;
         }
 
-            if (line > toLine && column > toColumn) {
-                if ((line - toLine) == (column - toColumn)) {
-                    return true;
-                }
+        if (obstacles(chessBoard, line, column, toLine, toColumn)) {
+            return false;
+        }
+
+        if (line > toLine && column > toColumn) {
+            if ((line - toLine) == (column - toColumn)) {
+                return true;
             }
-            if (line > toLine && column < toColumn) {
-                if ((line - toLine) == (toColumn - column)) {
-                    return true;
-                }
+        }
+        if (line > toLine && column < toColumn) {
+            if ((line - toLine) == (toColumn - column)) {
+                return true;
             }
-            if (line < toLine && column > toColumn) {
-                if ((toLine - line) == (column - toColumn)) {
-                    return true;
-                }
+        }
+        if (line < toLine && column > toColumn) {
+            if ((toLine - line) == (column - toColumn)) {
+                return true;
             }
-            if (line < toLine && column < toColumn) {
-                return (toLine - line) == (toColumn - column);
-            }
+        }
+        if (line < toLine && column < toColumn) {
+            return (toLine - line) == (toColumn - column);
+        }
 
         return false;
     }
