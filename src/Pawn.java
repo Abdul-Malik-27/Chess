@@ -14,36 +14,40 @@ public class Pawn extends ChessPiece {
             return false;
         }
 
-            if (line == 1 && column == toColumn && (line + 1 == toLine || line + 2 == toLine)) {
+        if (chessBoard.board[line][column].getColor().equals("White") && line == 1 && column == toColumn && (line + 1 == toLine || line + 2 == toLine)) {
+            return true;
+        }
+
+
+        if (chessBoard.board[line][column].getColor().equals("Black") && line == 6 && column == toColumn && (line - 1 == toLine || line - 2 == toLine)) {
+            return true;
+        }
+
+        if (chessBoard.board[line][column].getColor().equals("White") && column == toColumn && (line + 1) == toLine) {
+            return true;
+        }
+        if (chessBoard.board[line][column].getColor().equals("Black") && column == toColumn && (line - 1) == toLine) {
+            return true;
+        }
+
+
+        if (chessBoard.board[line][column].getColor().equals("White") && chessBoard.board[toLine][toColumn].getColor().equals("Black")) {
+            if (line + 1 == toLine && column + 1 == toColumn) {
                 return true;
             }
-
-
-            if (line == 6 && column == toColumn && (line - 1 == toLine || line - 2 == toLine)) {
+            if (line + 1 == toLine && column - 1 == toColumn) {
                 return true;
             }
+        }
 
-            if (column == toColumn && (line + 1 == toLine || line - 1 == toLine)) {
+        if (chessBoard.board[line][column].getColor().equals("Black") && chessBoard.board[toLine][toColumn].getColor().equals("White")) {
+            if (line - 1 == toLine && column - 1 == toColumn) {
                 return true;
             }
-
-            if (chessBoard.board[line][column].getColor().equals("White") && chessBoard.board[toLine][toColumn].getColor().equals("Black")) {
-                if (line + 1 == toLine && column + 1 == toColumn) {
-                    return true;
-                }
-                if (line + 1 == toLine && column - 1 == toColumn) {
-                    return true;
-                }
+            if (line - 1 == toLine && column + 1 == toColumn) {
+                return true;
             }
-
-            if (chessBoard.board[line][column].getColor().equals("Black") && chessBoard.board[toLine][toColumn].getColor().equals("White")) {
-                if (line - 1 == toLine && column - 1 == toColumn) {
-                    return true;
-                }
-                if (line - 1 == toLine && column + 1 == toColumn) {
-                    return true;
-                }
-            }
+        }
 
         return false;
     }
