@@ -5,9 +5,9 @@ public class Main {
     public static ChessBoard buildBoard() {
         ChessBoard board = new ChessBoard("White");
 
-        board.board[0][0] = new Rook("White");    //  move 1 0 3 0
-        board.board[0][1] = new Horse("White");   //  move 6 0 4 0
-        board.board[0][2] = new Bishop("White");  //  move 0 0 2 0
+        board.board[0][0] = new Rook("White");
+        board.board[0][1] = new Horse("White");
+        board.board[0][2] = new Bishop("White");
         board.board[0][3] = new Queen("White");
         board.board[0][4] = new King("White");
         board.board[0][5] = new Bishop("White");

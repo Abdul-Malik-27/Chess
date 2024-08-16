@@ -1,4 +1,4 @@
-public class Bishop extends ChessPiece implements CheckFigure {
+public class Bishop extends ChessPiece {
 
     public Bishop(String color) {
         super(color);
@@ -47,5 +47,51 @@ public class Bishop extends ChessPiece implements CheckFigure {
     @Override
     public String getSymbol() {
         return "B";
+    }
+
+    private boolean obstacles(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
+
+        if (line < toLine && column < toColumn) {
+            if ((toLine - line) == (toColumn - column)) {
+                while ((++line) < toLine && (++column) < toColumn) {
+                    if (chessBoard.board[line][column] != null) {
+                        return true;
+                    }
+
+                }
+            }
+        }
+        if (line < toLine && column > toColumn) {
+            if ((toLine - line) == (column - toColumn)) {
+                while ((++line) < toLine && (--column) > toColumn) {
+                    if (chessBoard.board[line][column] != null) {
+                        return true;
+                    }
+
+                }
+            }
+        }
+        if (line > toLine && column < toColumn) {
+            if ((line - toLine) == (toColumn - column)) {
+                while ((--line) > toLine && (++column) < toColumn) {
+                    if (chessBoard.board[line][column] != null) {
+                        return true;
+                    }
+
+                }
+            }
+        }
+        if (line > toLine && column > toColumn) {
+            if ((line - toLine) == (column - toColumn)) {
+                while ((--line) > toLine && (--column) > toColumn) {
+                    if (chessBoard.board[line][column] != null) {
+                        return true;
+                    }
+
+                }
+            }
+        }
+
+        return false;
     }
 }
